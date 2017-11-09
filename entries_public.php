@@ -3,10 +3,6 @@
   // Hier Code... (Schlaufe über alle Einträge dieses Blogs)
 
   // Nachfolgend das Beispiel einer Ausgabe in HTML, dieser Teil muss mit einer Schlaufe über alle Blog-Beiträge und der Ausgabe mit PHP ersetzt werden
-  $entrys = getEntry(4);
-  foreach ($entrys as $entry) {
-    echo "<h4>".$entry['title']."</h4>";
-  }
 ?>
   <div>
   <h4>Hipster Ipsum, 01.11.2016 16:42:12</h4>
