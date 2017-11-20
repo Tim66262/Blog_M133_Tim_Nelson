@@ -2,7 +2,6 @@
   session_start();
   require_once("include/functions.php");
   require_once("include/functions_db.php");
-  require_once("include/config.php");
   if (isset($_GET['function'])) $function = $_GET['function'];
   else $function = "login";
   // Wenn es sich um eine Funktion des Member-Bereichs handelt
