@@ -5,6 +5,11 @@
     header("Location: index.php?function=".getValue('cfg_func_member')[0]);
 	exit;
   }
+  if(isset($_GET['eid'])){
+  $entryId=$_GET['eid'];
+  }else{
+	   $entryId=getMaxEntryId(1);
+  }
   $name = "";
   $kommentar = "";
   $meldung = "";
@@ -31,7 +36,7 @@
 		  $active = "";
 		}
 		echo "<div class='list-group'>";
-		echo "<a class='list-group-item$active' href='index.php?function=entries_login&bid=$blogId&eid=$entry[0]' title='Beitrag anzeigen'>";
+		echo "<a class='list-group-item$active' href='index.php?function=entries_public&bid=$blogId&eid=$entry[0]' title='Beitrag anzeigen'>";
 		$datetime = date("d.m.Y H:i:s", $entry[1]);
 		echo "<h4 class='list-group-item-heading'>".htmlspecialchars($entry[2]).", ".$datetime."</h4>";
 		$string = htmlspecialchars(substr($entry[3],0,95))."...";
@@ -64,7 +69,7 @@
 		  echo "<small>".nl2br(htmlspecialchars($comment[4]))."</small><br />";
 		  echo "</p>";
 		}
-		echo "<form name='formular' method='post' action='".$_SERVER['PHP_SELF']."?function=entries_login&bid=$blogId&eid=$entry[0]'>";
+		echo "<form name='formular' method='post' action='".$_SERVER['PHP_SELF']."?function=entries_public&bid=$blogId&eid=$entryId'>";
 		echo "<div class='form-group'>";
 		echo "<input type='text' class='form-control' id='name' name='name' placeholder='Name (mind. 3 Zeichen)' value='$name' />";
 		echo "</div>";
@@ -80,3 +85,5 @@
 	}
 	?>
 </div>
+
+

@@ -8,26 +8,26 @@
 ?>
 <div class="row">
 	<?php
-	  // Anzahl Spalten für die Ausgabe der Namen
-	  $anzRows = 3;
-	  $row = 1;
+	  // instanzirung der Variabeln für spalten
+	  $anzahlSpalte = 4;
+	  $spalte = 1;
 	  $blogs = getUserNames();
-	  $array = [];
-	  // Die Benutzer auf die Spalten aufteilen
+	  $listeBenutzer = [];
+	  // Die Autoren auf die Spalten aufteilen
 	  foreach ($blogs as $blog) {
-		$array[$row][] = $blog;
-		$row++;
-		if ($row > $anzRows) $row = 1;
+		$listeBenutzer[$spalte][] = $blog;
+		$spalte++;
+		if ($spalte > $anzahlSpalte) $spalte = 1;
 	  }
 	  // Schlaufe über alle Spalten
-	  for ($row=1; $row<=$anzRows; $row++) {
-		echo "<div class='col-md-4'>";
-		// Schlaufe über den Array dieser Spalte
-		foreach ($array[$row] as $blog) {
+	  for ($spalte=1; $spalte<=$anzahlSpalte; $spalte++) {
+		echo "<div class='col-md-3'>";
+		// Schlaufe über den listeBenutzer zum erzeugen der einträge
+		foreach ($listeBenutzer[$spalte] as $blog) {
 		  if ($blog[0] == $blogId) $active = " active";
 		  else $active = "";
 		  echo "<div class='list-group'>";
-		  echo "<a class='list-group-item$active' href='index.php?function=entries_login&bid=".$blog[0]."&eid=".getMaxEntryId($blog[0])."' title='Blog auswählen'>";
+		  echo "<a class='list-group-item$active' href='index.php?function=entries_public&bid=".$blog[0]."&eid=".getMaxEntryId($blog[0])."' title='Blog auswählen'>";
 		  echo "<h4 class='list-group-item-heading'>".htmlspecialchars($blog[1])."</h4>";
 		  echo "</a>";
 		  echo "</div>";

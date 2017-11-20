@@ -2,7 +2,7 @@
   session_start();
   require_once("include/functions.php");
   require_once("include/functions_db.php");
-  require_once("include/configDB.php");
+  require_once("include/config.php");
   if (isset($_GET['function'])) $function = $_GET['function'];
   else $function = "login";
   // Wenn es sich um eine Funktion des Member-Bereichs handelt
@@ -46,13 +46,6 @@
 	if (!file_exists("$function.php")) exit("Die Datei '$function.php' konnte nicht gefunden werden!");
 	require_once("$function.php");
   ?>
-  </div>
-  <div class="container" style="margin-top:20px; margin-bottom:20px">
-	<div class="row">
-	  <div class="col-md-offset-3 col-md-4 text-center small text-muted">
-		&copy;&nbsp;Copyright Michael Abplanalp
-	  </div>
-	</div>
   </div>
 </body>
 </html>
