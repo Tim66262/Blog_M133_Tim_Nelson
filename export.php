@@ -6,29 +6,25 @@
 	exit;
   }
   $meldung = "";
-  $alert = "alert-danger";
+  $alertText = "alert-danger";
   $targetFile = str_replace("\\", "/", getcwd()).EXCHANGE_PATH.EXPORT_FILE;
   if (isset($_POST["submit"])) {
-	$stat = exportUsers($targetFile);
-	if ($stat["alert"] == 1) $alert = "alert-warning";
-	elseif ($stat["alert"] == 2) $alert = "alert-success";
-	$meldung = $stat["meldung"];
+	$status = exportUsers($targetFile);
+	if ($status["alert"] == 1) $alertText = "alert-warning";
+	elseif ($status["alert"] == 2) $alertText = "alert-success";
+	$meldung = $status["meldung"];
   }
 ?>
 
 <form class="form-horizontal" method="post" action="<?php echo $_SERVER['PHP_SELF']."?function=export"; ?>">
-  <div class="col-md-10 text-center">
+  <div class="col-md-12 text-center">
 	<h4>
 	  <?php
-		echo "Die Benutzer werden in die Datei \"$targetFile\" exportiert.";
+		echo "Der Export der benuter wird auf dem \"$targetFile\" Verzeichnis hinterlegt.";
 	  ?>
 	</h4>
 	<br /><br />
-  </div>
-  <div class="form-group">
-	<div class="col-md-offset-3 col-md-4 text-center">
-		<button type="submit" name="submit" class="btn btn-success">Export starten</button>
-	</div>
+	<button type="submit" name="submit" class="btn-success">Export starten</button>
   </div>
 </form>
-<?php if (strlen($meldung) > 0) echo "<br /><div class='col-md-offset-2 col-md-6 alert $alert'>$meldung</div>"; ?>
+<?php if (strlen($meldung) > 0) echo "<br /><div class='col-md-offset-2 col-md-12 alert $alertText'>$meldung</div>"; ?>

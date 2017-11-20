@@ -27,7 +27,7 @@
 		echo "<a class='list-group-item$active' href='index.php?function=entries_member&eid=".$entry[0]."' title='Beitrag anzeigen'>";
 		$datetime = date("d.m.Y H:i:s", $entry[1]);
 		echo "<h4 class='list-group-item-heading'>".htmlentities($entry[2]).", ".$datetime."</h4>";
-		$string = htmlentities(substr($entry[3],0,95))."...";
+		$string = htmlentities(substr($entry[3],0,98))."...";
 		echo "<p class='list-group-item-text'>".$string."</p>";
 		echo "</a>";
 		echo "</div>";
