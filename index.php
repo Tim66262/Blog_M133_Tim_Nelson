@@ -19,7 +19,11 @@
 <html lang="de">
 <head>
   <meta charset="utf-8">
+<<<<<<< HEAD
 <!-- 
+=======
+<!--
+>>>>>>> parent of f632cd3... Fertige Version muss varibal angepasst werden
   Die nächsten 4 Zeilen sind Bootstrap, falls nicht gewünscht entfernen.
 -->
   <meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1">
@@ -31,17 +35,28 @@
 </head>
 
 <body>
+<<<<<<< HEAD
 <!-- 
+=======
+<!--
+>>>>>>> parent of f632cd3... Fertige Version muss varibal angepasst werden
   nav, div und ul class="..." ist Bootstrap, falls nicht gewünscht entfernen oder anpassen.
   Die Einteilung der Website in verschiedene Bereiche (Menü-, Content-Bereich, usw.) kann auch selber mit div realisiert werden.
 -->
   <nav class="navbar navbar-default navbar-fixed-top">
 	<div class="container">
       <div class="navbar-header">
+<<<<<<< HEAD
 		<a class="navbar-brand"><?php echo "Blog (Namen einsetzen...)"; ?></a>
       </div>
       <ul class="nav navbar-nav">
 		<?php 
+=======
+		<a class="navbar-brand"><?php echo "Blog ".getUserName($blogId); ?></a>
+      </div>
+      <ul class="nav navbar-nav">
+		<?php
+>>>>>>> parent of f632cd3... Fertige Version muss varibal angepasst werden
 		  echo "<li><a href='index.php?function=login&bid=$blogId'>Login</a></li>";
 		  echo "<li><a href='index.php?function=blogs&bid=$blogId'>Blog wählen</a></li>";
 		  echo "<li><a href='index.php?function=entries_public&bid=$blogId'>Beiträge anzeigen</a></li>";
