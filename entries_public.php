@@ -1,10 +1,6 @@
 <?php
   $userId = getUserIdFromSession();
-  // Falls der Benutzer bereits angemeldet ist, wechselt die App in den Member-Bereich
-  if ($userId > 0) {
-    header("Location: index.php?function=".getValue('cfg_func_member')[0]);
-	exit;
-  }
+ 
   if(isset($_GET['eid'])){
   $entryId=$_GET['eid'];
   }else{
@@ -16,8 +12,7 @@
 
 
 ?>
-<<<<<<< HEAD
-=======
+
 <div class="row">
   <div class="col-md-4">
 	<?php
@@ -62,4 +57,3 @@
 </div>
 
 
->>>>>>> 146ffd19557809188bd12523e28a73f148617f66
