@@ -1,27 +1,40 @@
 <?php
+  $userId = getUserIdFromSession();
   $meldung = "";
   $email = "";
   $passwort = "";
-  // $_SERVER['PHP_SELF'] = login.php in diesem Fall (also die PHP-Datei, die gerade ausgeführt wird).
-  // Mit andern Worten: Nach Senden des Formulars wird wieder login.php aufgerufen.
-  // Die Funktionen zur Überprüfung, ob die Login-Daten gültig sind, muss also hier oben im PHP-Teil stehen!
-  // Wenn Login-Daten korrekt sind:
-  // Session-Variable mit Benutzer-ID setzen und Wechsel in Memberbereich
-  // $_SESSION['uid'] = $uid;	
-  // header('Location: index.php?function=entries_member');
-  // Wenn Formular gesendet worden ist, die Login-Daten aber nicht korrekt sind:
-  // Unten auf der Seite Anzeige der Fehlermeldung.
+  if (isset($_POST['email']) && isset($_POST['passwort'])) {
+  	$uid = getUserIdFromDb($_POST['email'], $_POST['passwort']);
+  	if ($uid > 0) {
+	  $_SESSION['uid'] = $uid;	
+	  header("Location:index.php?function=entries_public");
+	}
+  	else {
+	  $meldung = "Login-Daten nicht korrekt... bitte nochmals versuchen oder registrieren.";
+	  $email = $_POST['email'];
+	  $passwort = $_POST['passwort'];
+	}
+  }
 ?>
-<form method="post" action="<?php echo $_SERVER['PHP_SELF']."?function=login"; ?>">
-  <label for="email">Benutzername</label>
-  <div>
-	<input type="email" id="email" name="email" placeholder="E-Mail" value="" />
+<form class="form-horizontal" method="post" action="<?php echo $_SERVER['PHP_SELF']."?function=login"; ?>">
+  <div class="form-group">
+	<label class="control-label col-md-offset-2 col-md-2" for="email">Benutzername</label>
+	<div class="col-md-4">
+	  <input type="email" class="form-control" id="email" name="email" placeholder="E-Mail" value="<?php echo $email; ?>" />
+	</div>
   </div>
-  <label for="passwort">Passwort</label>
-  <div>
-	<input type="password" id="passwort" name="passwort" placeholder="Passwort" value="" />
+  <div class="form-group">
+	<label class="control-label col-md-offset-2 col-md-2" for="passwort">Passwort</label>
+	<div class="col-md-4">
+	  <input type="password" class="form-control" id="passwort" name="passwort" placeholder="Passwort" value="<?php echo $passwort; ?>" />
+	</div>
   </div>
-  <div>
-	<button type="submit">senden</button>
+  <div class="form-group">
+	<div class="col-md-offset-4 col-md-4">
+		<button type="submit" class="btn btn-success">senden</button>
+	</div>
   </div>
 </form>
+<?php
+  if (strlen($meldung) > 0) echo "<div class='col-md-offset-2 col-md-6 alert alert-danger'>$meldung</div>";
+?>

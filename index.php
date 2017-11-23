@@ -14,6 +14,7 @@
   // Prüfung, ob bereits ein Blog ausgewählt worden ist
   if (isset($_GET['bid'])) $blogId = $_GET['bid'];
   else $blogId = 0;
+  $uid =getUserIdFromSession();
 ?>
 <!DOCTYPE html>
 <html lang="de">
@@ -42,9 +43,15 @@
       </div>
       <ul class="nav navbar-nav">
 		<?php 
+		if($uid>0){
+		  echo "<li><a href='index.php?function=blogs&bid=$blogId'>Blog wählen</a></li>";
+		  echo "<li><a href='index.php?function=entries_public&bid=$blogId'>Beiträge anzeigen</a></li>";
+		  echo "<li><a href='index.php?function=logout&bid=$blogId'>Logout</a></li>";
+		}else{
 		  echo "<li><a href='index.php?function=login&bid=$blogId'>Login</a></li>";
 		  echo "<li><a href='index.php?function=blogs&bid=$blogId'>Blog wählen</a></li>";
 		  echo "<li><a href='index.php?function=entries_public&bid=$blogId'>Beiträge anzeigen</a></li>";
+		}
 		?>
       </ul>
 	</div>
