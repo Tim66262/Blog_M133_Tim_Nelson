@@ -19,7 +19,7 @@
 <html lang="de">
 <head>
   <meta charset="utf-8">
-<!--
+<!-- 
   Die nächsten 4 Zeilen sind Bootstrap, falls nicht gewünscht entfernen.
 -->
   <meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1">
@@ -31,7 +31,7 @@
 </head>
 
 <body>
-<!--
+<!-- 
   nav, div und ul class="..." ist Bootstrap, falls nicht gewünscht entfernen oder anpassen.
   Die Einteilung der Website in verschiedene Bereiche (Menü-, Content-Bereich, usw.) kann auch selber mit div realisiert werden.
 -->
@@ -41,7 +41,7 @@
 		<a class="navbar-brand"><?php echo "Blog ".getUserName($blogId); ?></a>
       </div>
       <ul class="nav navbar-nav">
-		<?php
+		<?php 
 		  echo "<li><a href='index.php?function=login&bid=$blogId'>Login</a></li>";
 		  echo "<li><a href='index.php?function=blogs&bid=$blogId'>Blog wählen</a></li>";
 		  echo "<li><a href='index.php?function=entries_public&bid=$blogId'>Beiträge anzeigen</a></li>";
