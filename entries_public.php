@@ -13,8 +13,8 @@
   $name = "";
   $kommentar = "";
   $meldung = "";
-  
-  
+
+
 ?>
 <<<<<<< HEAD
 =======
@@ -54,8 +54,8 @@
 		echo "<h3>".htmlspecialchars($entry[2]).", ".$datetime."</h3>";
 		echo nl2br(htmlspecialchars($entry[3]));
 		echo "<p>&nbsp;</p>";
-		
-		
+
+
 	  }
 	}
 	?>
