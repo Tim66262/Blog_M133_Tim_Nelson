@@ -5,16 +5,14 @@
 	  $spalte = 1;
 	  $blogs = getUserNames();
 	  $listeBenutzer = [];
-	  // Die Autoren auf die Spalten aufteilen
+	  // Die Items auf die Spalten aufteilen
 	  foreach ($blogs as $blog) {
 		$listeBenutzer[$spalte][] = $blog;
 		$spalte++;
 		if ($spalte > $anzahlSpalte) $spalte = 1;
 	  }
-	  // Schlaufe über alle Spalten
 	  for ($spalte=1; $spalte<=$anzahlSpalte; $spalte++) {
 		echo "<div class='col-md-3'>";
-		// Schlaufe über den listeBenutzer zum erzeugen der einträge
 		foreach ($listeBenutzer[$spalte] as $blog) {
 		  if ($blog[0] == $blogId) $active = " active";
 		  else $active = "";
