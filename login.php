@@ -10,7 +10,7 @@
 	  header("Location:index.php?function=entries_public");
 	}
   	else {
-	  $meldung = "Login-Daten nicht korrekt... bitte nochmals versuchen oder registrieren.";
+	  $meldung = "Login-Daten nicht richtig... bitte nochmals versuchen oder registriere dich.";
 	  $email = $_POST['email'];
 	  $passwort = $_POST['passwort'];
 	}
