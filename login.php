@@ -7,7 +7,8 @@
   	$uid = getUserIdFromDb($_POST['email'], $_POST['passwort']);
   	if ($uid > 0) {
 	  $_SESSION['uid'] = $uid;
-	  header("Location:index.php?function=entries_private&uid=$uid");
+	  $entryId=getMaxEntryId($uid);
+	  header("Location:index.php?function=entries_private&uid=$uid&eid=$entryId");
 	}
   	else {
 	  $meldung = "Login-Daten nicht richtig... bitte nochmals versuchen oder registriere dich.";

@@ -1,11 +1,11 @@
 <?php
-  $uId = getUserIdFromSession();
+  $userId = getUserIdFromSession();
 
-  //if(isset($_GET['uid'])){
-  //$entryId=getEntries($uid);
-  //}else{
-	   $entryId=getMaxEntryId($uId);
-  //}
+  if(isset($_GET['eid'])){
+  $entryId=$_GET['eid'];
+  }else{
+	   $entryId=getMaxEntryId(1);
+  }
   $name = "";
   $kommentar = "";
   $meldung = "";
