@@ -55,7 +55,7 @@
 if($eId!= 0){
 	echo "<button type='submit' class='col-md-4 btn btn-success'>speichern</button>";
 	echo	"<a  href='index.php?function=entries_private&killE=true&eid=$eId' class='col-md-4 btn btn-red'>Löschen</a>";
-	echo	"<a  href='index.php' class='col-md-4 btn btn-warning'>abbrechen</a>";
+	echo	"<a  href='index.php?function=entries_private&eid=$eId' class='col-md-4 btn btn-warning'>abbrechen</a>";
 }else{
 	echo "<button type='submit' class='col-md-6 btn btn-success'>speichern</button>";
 	echo	"<a  href='index.php' class='col-md-6 btn btn-warning'>abbrechen</a>";
