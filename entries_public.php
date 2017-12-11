@@ -16,15 +16,15 @@
 <div class="row">
   <div class="col-md-4">
 	<?php
-	  $entries = getEntries($blogId);
+	  $entries = getEntries($bId);
 	  foreach($entries as $entry) {
-		if ($entry[0] == $entryId) {
+		if ($entry[0] == $eId) {
 		  $active = " active";
 		} else {
 		  $active = "";
 		}
 		echo "<div class='list-group'>";
-		echo "<a class='list-group-item$active' href='index.php?function=entries_public&bid=$blogId&eid=$entry[0]' title='Beitrag anzeigen'>";
+		echo "<a class='list-group-item$active' href='index.php?function=entries_public&bid=$bId&eid=$entry[0]' title='Beitrag anzeigen'>";
 		$datetime = date("d.m.Y H:i:s", $entry[1]);
 		echo "<h4 class='list-group-item-heading'>".htmlspecialchars($entry[2]).", ".$datetime."</h4>";
 		$string = htmlspecialchars(substr($entry[3],0,95))."...";

@@ -14,7 +14,7 @@
 	  for ($spalte=1; $spalte<=$anzahlSpalte; $spalte++) {
 		echo "<div class='col-md-3'>";
 		foreach ($listeBenutzer[$spalte] as $blog) {
-		  if ($blog[0] == $blogId) $active = " active";
+		  if ($blog[0] == $bId) $active = " active";
 		  else $active = "";
 		  echo "<div class='list-group'>";
 		  echo "<a class='list-group-item$active' href='index.php?function=entries_public&bid=".$blog[0]."&eid=".getMaxEntryId($blog[0])."' title='Blog auswählen'>";

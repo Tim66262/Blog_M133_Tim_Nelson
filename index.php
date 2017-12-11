@@ -3,18 +3,34 @@
   require_once("include/functions.php");
   require_once("include/functions_db.php");
   require_once("include/functions_db_plus.php");
+  ///////////////////////
   define("DBNAME", "db/blog.db");
   // Datenbankverbindung herstellen, diesen Teil nicht ändern!
   if (!file_exists(DBNAME)) exit("Die Datenbank 'blog.db' konnte nicht gefunden werden!");
   $db = new SQLite3(DBNAME);
   setValue("cfg_db", $db);
+  ////////////////////////////////////
   // Einfacher Dispatcher: Aufruf der Funktionen via index.php?function=xy
   if (isset($_GET['function'])) $function = $_GET['function'];
   else $function = "login";
-  // Prüfung, ob bereits ein Blog ausgewählt worden ist
-  if (isset($_GET['bid'])) $blogId = $_GET['bid'];
-  else $blogId = 1;
   $uid =getUserIdFromSession();
+  // Prüfung, ob bereits ein Blog ausgewählt worden ist
+   if (isset($_GET['bid'])){ 
+		$bId = $_GET['bid'];
+		}
+  else{ $bId = 0;
+  }
+  if (isset($_GET['eid'])) {
+		$eId = $_GET['eid'];
+		}
+  else { $eId = 0;
+  }
+  if (isset($_GET['killE'])){ 
+	$killE = true;
+  }
+  else{ $killE = false;
+  }
+  
 ?>
 <!DOCTYPE html>
 <html lang="de">
@@ -43,21 +59,25 @@
     if($uid>0){
       echo "Blog ".getUserName($uid); }
     else{
-      echo "Blog ".getUserName($blogId);
+      echo "Blog ".getUserName($bId);
     }?></a>
 
       </div>
       <ul class="nav navbar-nav">
 		<?php
 		if($uid>0){
-		  echo "<li><a href='index.php?function=entries_private&bid=$uid'>Beiträge anzeigen</a></li>";
-      echo "<li><a href='index.php?function=addblog&bid=$uid'>Beiträge hinzufügen</a></li>";
-      echo "<li><a href='index.php?function=logout&bid=$uid'>Logout</a></li>";
+		  echo "<li><a href='index.php?function=entries_private&bid=$uid&eid=$eId'>Beiträge anzeigen</a></li>";
+      echo "<li><a href='index.php?function=addblog&eid=0'>Beiträge hinzufügen</a></li>";
+      echo "<li><a href='index.php?function=logout&bid=$uid&eid=$eId'>Logout</a></li>";
     }
     else{
-		  echo "<li><a href='index.php?function=login&bid=$blogId'>Login</a></li>";
-		  echo "<li><a href='index.php?function=blogs&bid=$blogId'>Blog wählen</a></li>";
-		  echo "<li><a href='index.php?function=entries_public&bid=$blogId'>Beiträge anzeigen</a></li>";
+		  echo "<li><a href='index.php?function=login&bid=$bId&eid=$eId'>Login</a></li>";
+		  echo "<li><a href='index.php?function=blogs&bid=$bId&eid=$eId'>Blog wählen</a></li>";
+		  if(!isset($_SESSION['uid'])){
+		  echo "<li class='disabled'><a>Beiträge anzeigen</a></li>";
+		  }else{
+			  echo "<li><a href='index.php?function=entries_public&bid=$bId&eid=$eId'>Beiträge anzeigen</a></li>";
+		  }
 		}
 		?>
       </ul>
