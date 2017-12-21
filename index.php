@@ -5,6 +5,8 @@
   require_once("include/functions_db_plus.php");
   ///////////////////////
   define("DBNAME", "db/blog.db");
+  $killE = "";
+  $killC = "";
   // Datenbankverbindung herstellen, diesen Teil nicht ändern!
   if (!file_exists(DBNAME)) exit("Die Datenbank 'blog.db' konnte nicht gefunden werden!");
   $db = new SQLite3(DBNAME);
@@ -28,7 +30,11 @@
   if (isset($_GET['killE'])){ 
 	$killE = true;
   }
+  if (isset($_GET['killC'])){ 
+	$killC = true;
+  }
   else{ $killE = false;
+  $killC = false;
   }
   
 ?>
